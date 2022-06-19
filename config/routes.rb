@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  
+  root to: 'public/homes#top'
+
+  scope :public do
+    resources :homes, only:[:about]
+    resources :items, only:[:index,:show]
+    resources :registrations, only:[:new, :create]
+    resources :sessions, only:[:new, :create, :destroy]
+    resources :customers, only:[:show, :edit, :update, :bye, :adios]
+    resources :carts, only:[:index, :update, :destroy, :destroy_all, :create]
+    resources :orders, only:[:new, :confirm, :thanks, :create, :index, :show]
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+  end
+  
+  
   namespace :admin do
     get 'orders/show'
   end
