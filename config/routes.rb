@@ -13,10 +13,14 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :homes, only:[:about]
     resources :items, only:[:index,:show]
-    resources :customers, only:[:show, :edit, :update, :bye, :adios]
     resources :carts, only:[:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only:[:new, :confirm, :thanks, :create, :index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    get 'customers/my_page' => 'public/customers#show'
+    get 'customers/edit' => 'customers#edit'
+    patch 'customers' => 'customers#update'
+    get 'customers/bye' => 'customers#bye'
+    patch 'customers/adios' => 'customers#adios'
   end
   
   namespace :admin do
