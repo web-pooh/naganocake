@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :carts, only:[:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only:[:new, :confirm, :thanks, :create, :index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-    get 'customers/my_page' => 'public/customers#show'
+    get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
     get 'customers/bye' => 'customers#bye'
