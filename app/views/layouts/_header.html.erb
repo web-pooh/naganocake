@@ -12,10 +12,10 @@
 
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
-            ようこそ、<%= first_name(current_customer) %>さん！
+            ようこそ、<%=(current_customer) %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", customers_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>
+            <%= link_to "マイページ", customers_my_page_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>
           </li>
           <li>
             <%= link_to "商品一覧", items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
@@ -37,7 +37,7 @@
 		        </ul>
           </li>
           <li>
-            <%= link_to customers_cart_items_path, data: {"turbolinks" => false},
+            <%= link_to carts_path, data: {"turbolinks" => false},
              class: "header_btn glyphicon glyphicon-shopping-cart" do %>カート(<%= current_customer.carts.count %>個)
             <% end %>
           </li>
