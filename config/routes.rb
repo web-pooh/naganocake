@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :confirm, :thanks, :create, :index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     get 'customers/my_page' => 'customers#show'
-    patch 'customers/update' => 'customers#update'
+    get 'customers/edit' => 'customers#edit'
+    patch 'customers' => 'customers#update'
     get 'customers/bye' => 'customers#bye'
     patch 'customers/adios' => 'customers#adios'
   end
