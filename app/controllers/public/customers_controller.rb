@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def bye
@@ -12,10 +12,10 @@ class Public::CustomersController < ApplicationController
   end
   
   def update
-     @costomer = Customer.find(params[:id])
+     @customer = current_customer
      if @customer.update(customer_params)
        flash[:notice] = "会員情報の編集に成功しました."
-       redirect_to customer_path(current_user)
+       redirect_to customers_my_page_path
      else
        flash[:alart] = "会員情報の編集に失敗しました"
        render "edit"
@@ -23,12 +23,13 @@ class Public::CustomersController < ApplicationController
   end
   
   def adios
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
+    @customer.update(is_deletede: false)
     redirect_to root_path
   end
   
   private
   def customer_params
-    params.require(:cutomer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :addresse, :phone_numbere, :email)
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :addresse, :phone_numbere, :email)
   end
 end

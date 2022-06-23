@@ -6,5 +6,5 @@
     <br>退会する場合は、「退会する」をクリックしてください。
 </div>
 
-<%= link_to "退会しない", customer_path(@cutomer) %>
-<%= link_to "退会する", root_path(@cutomer), method: :delete, data: {confirm: "本当に退会してもよろしいですか？"}, class: "btn btn-byebye" %>
+<%= link_to "退会しない", customers_my_page_path(@cutomer) %>
+<%= link_to "退会する", customers_adios_path, method: :PATCH,  data: {confirm: "本当に退会してもよろしいですか？"}, class: "btn btn-byebye" %>
