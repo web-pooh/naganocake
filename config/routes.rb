@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     patch 'customers' => 'customers#update'
     get 'customers/bye' => 'customers#bye'
     patch 'customers/adios' => 'customers#adios'
+    post 'orders/confirm' => 'orders#confirm'
   end
 
   namespace :admin do
