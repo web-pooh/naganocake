@@ -1,37 +1,15 @@
 class Public::CartsController < ApplicationController
-before_action :set_line_item, only: [:add_item, :destroy]
-before_action :set_customer
-before_action :set_cart
+   before_action :set_cart_item, only: [:update, :destroy]
+  before_action :authenticate_customer!
 
-  def show
-    @line_items = @cart.line_items
+  def index
+    @carts = current_cart
   end
 
-  def add_item
-    @line_item = @cart.line_items.build(item_id: params[:item_id]) if @line_item.blank?
-    @line_item.quantity += params[:quantity].to_i
-    if @line_item.save
-      redirect_to current_cart
-    else
-      redirect_to controller: "itemts", action: "show"
-    end
-  end
-
-  def destroy
-    @cart.destroy
-    redirect_to current_cart
-  end
 
   private
-  def set_customer
-    @customer = current_customer
-  end
 
-  def set_line_item
-    @line_item = current_cart.line_items.find_by(item_id: params[:item_id])
-  end
-
-  def set_cart
-    @cart = current_cart
+  def params_cart_item
+    params.require(:cart).permit(:quantity, :item_id)
   end
 end
