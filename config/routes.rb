@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  patch 'customers' => 'public/customers#update'
 
   root to: 'public/homes#top'
    get'about' => 'public/homes#about'
@@ -19,7 +21,6 @@ Rails.application.routes.draw do
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
     get 'customers/bye' => 'customers#bye'
     patch 'customers/adios' => 'customers#adios'
     post 'orders/confirm' => 'orders#confirm'
