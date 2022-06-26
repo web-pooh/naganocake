@@ -9,7 +9,7 @@ class Admin::ItemsController < ApplicationController
   
    def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
      flash[:notice] = "新規登録に成功しました"
      redirect_to admin_item_path(@item.id)
     else
@@ -19,9 +19,11 @@ class Admin::ItemsController < ApplicationController
    end
 
   def show
+      @item = Item.find(params[:id])
   end
 
   def edit
+      @item = Item.find(params[:id])
   end
 
   private
