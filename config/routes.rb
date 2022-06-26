@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'customers/bye' => 'customers#bye'
     patch 'customers/adios' => 'customers#adios'
     post 'orders/confirm' => 'orders#confirm'
-    delete 'carts' => 'carts#all'
+    delete 'carts' => 'carts#all', as: 'all'
   end
 
   namespace :admin do

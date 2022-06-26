@@ -1,7 +1,7 @@
 <div class="admins-items-edit">
     
-    <h1>商品新規登録</h1>
-         <%= form_for @item, url:edit_admin_item_path(@item) do |f| %>
+    <h1>商品編集</h1>
+         <%= form_for @item, url:admin_item_path(@item.id) do |f| %>
       <label for="item-image">商品画像</label>
          <%= f.file_field :image, accept: "image/*" %><br>
       <label for="items-name">商品名</label>
