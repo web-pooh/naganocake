@@ -1,7 +1,7 @@
 <div class="customer-edit">
     
     <h1>会員情報編集</h1>
-    <%= form_for @customer,url: customers_update_path do |f| %>
+    <%= form_with model: @customer,url: customers_path do |f| %>
       <label for="customer-name">氏名</label><br>
          <%= f.text_field :first_name %>
          <%= f.text_field :last_name %><br>
