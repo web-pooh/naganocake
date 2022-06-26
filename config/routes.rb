@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   patch 'customers' => 'public/customers#update'
+  get 'orders/thanks' => 'public/orders#thanks'
 
   root to: 'public/homes#top'
    get'about' => 'public/homes#about'
