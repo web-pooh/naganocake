@@ -1,12 +1,20 @@
 <% provide(:title, "ジャンル編集") %>
 <h2 class="head-line title_h2 text-center" >ジャンル編集</h2>
 
-  <% if @genre.errors.any? %>
-    <%= render "layouts/error_messages", resource: @genre %>
-  <% end %>
-  <%= form_for @genre, :url => {:action => :update} do |f| %>
-  <% end %>
-<br>
-  <div class="col-xs-12">
-    <%= link_to "戻る", admin_genres_path, class: "glyphicon glyphicon-home btn btn-info" %>
-  </div>
+<% if @genre.errors.any? %>
+<%= render "layouts/error_messages", resource: @genre %>
+<% end %>
+
+<%= form_with model: [:admin, @genre], local:true do |f| %>
+
+<h2>ジャンル名</h2>
+
+<%= f.text_field :name %>
+<%= f.submit "変更を保存" %>
+
+<% end %>
+
+
+<div class="col-xs-12">
+  <%= link_to "戻る", admin_genres_path, class: "glyphicon glyphicon-home btn btn-info" %>
+</div>

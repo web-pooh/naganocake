@@ -1,7 +1,7 @@
 <header>
     <nav class="nav navbar-nav navbar-left title">
       <% if admin_signed_in? %>
-      <%= link_to "NaganoCAKE", admin_top_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", admin_root_path, class: "fas fa-birthday-cake" %>
       <% else %>
       <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
       <% end %>
@@ -12,29 +12,13 @@
 
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
-            ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
+            ようこそ、<%= current_customer.first_name + current_customer.last_name %>さん！
           </li>
           <li>
             <%= link_to "マイページ", customers_my_page_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>
           </li>
           <li>
             <%= link_to "商品一覧", items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
-          </li>
-          <li class="dropdown">
-            <%= link_to "#", class: "header_btn dropdown-toggle glyphicon glyphicon-th-list",
-             'data-toggle': :dropdown do %>ジャンル検索<span class="caret"></span>
-            <% end %>
-            <ul class="dropdown-menu">
-              <% Genre.all.each do |genre| %>
-                <% if genre.is_valid == true %>
-			            <li class="genre_dropdown">
-                    <%= link_to admin_genre_path(genre), method: :get do %>
-                      <%= genre.name %>
-                    <% end %>
-                  </li>
-                <% end %>
-              <% end %>
-		        </ul>
           </li>
           <li>
             <%= link_to carts_path, data: {"turbolinks" => false},
@@ -55,7 +39,7 @@
             <%= link_to "会員一覧", admin_customers_path, class: "header_btn glyphicon glyphicon-user"  %>
           </li>
           <li>
-            <%= link_to "注文履歴一覧", admin_orders_path, class: "header_btn glyphicon glyphicon-list-alt" %>
+            <%= link_to "注文履歴一覧", admin_root_path, class: "header_btn glyphicon glyphicon-list-alt" %>
           </li>
           <li>
             <%= link_to "ジャンル一覧", admin_genres_path, class: "header_btn glyphicon glyphicon-th-list" %>
@@ -65,7 +49,7 @@
           </li>
         <% else %>
 
-      
+
           <li>
             <%= link_to "商品一覧", items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
           </li>

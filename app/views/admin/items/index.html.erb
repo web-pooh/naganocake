@@ -1,5 +1,12 @@
 <div class="admin_items_index">
+
+
+
 <h2>商品一覧</h2>
+
+<%= link_to "新規商品を登録", new_admin_item_path %>
+<!--仮ボタン-->
+
    <table class="table table-items">
         <thred>
            <tr>
@@ -10,7 +17,7 @@
              <th>ステータス</th>
         　</tr>
         </thred>
-       
+
         <tbody>
           <% @items.each do |item| %>
           <tr>
