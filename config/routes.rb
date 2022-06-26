@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :homes, only:[:about]
     resources :items, only:[:index,:show]
-    resources :carts, only:[:index, :update, :destroy, :destroy_all, :create]
+    resources :carts, only:[:index, :update, :destroy, :create]
     resources :orders, only:[:new, :confirm, :thanks, :create, :index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     get 'customers/my_page' => 'customers#show'
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'customers/bye' => 'customers#bye'
     patch 'customers/adios' => 'customers#adios'
     post 'orders/confirm' => 'orders#confirm'
+    delete 'carts' => 'carts#all'
   end
 
   namespace :admin do
