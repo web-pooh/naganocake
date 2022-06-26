@@ -20,7 +20,7 @@
 
       <div class="field">
         <% if @item.is_active == true %>
-            <%= form_for(@cart , url: carts_path, method: :post) do |f| %>
+            <%= form_with model: @cart, url: carts_path, method: :post do |f| %>
               <%= f.hidden_field :item_id, value: @item.id %>
               <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
               <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>

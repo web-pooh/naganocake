@@ -10,11 +10,11 @@ class Public::OrdersController < ApplicationController
     if @order.save
       @cart_items=current_customer.carts
       @cart_items.each do |carts|
-        order_detail=OrderDetail.new(item_id: carts.item.id, order_id: @order.id, price: cart_item.item.price, billing_amount: cart_item.amount)
+        order_detail=OrderDetail.new(item_id: carts.item.id, order_id: @order.id, price: carts.item.price, amount: carts.count)
         order_detail.save
       end
       @cart_items.destroy_all
-      redirect_to thanks_path
+      redirect_to orders_thanks_path
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
     end
   end
-  
+
 
   def thanks
   end
@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
 		@order_details = @order.order_details
   end
-	
+
 private
   def order_params
     params.require(:order).permit(:payment_method, :customer_id, :postal_code, :address, :receiver_name, :billing_amount, :postage, :status)

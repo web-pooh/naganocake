@@ -14,20 +14,17 @@ before_action :authenticate_customer!
 
     # カート商品を追加する
     def create
-        # @cart_item = current_customer.cart_items.build(item_id: params[:item_id])
-        @cart = Cart.new(cart_params)
-        @cart.customer_id = current_customer.id
-        @cart.item_id = params[:item_id]
-        # byebug
-        if @cart.save
-           flash[:notice] = "#{@cart.item.name}をカートに追加しました。"
-           redirect_to items_path
-        else
-            @item = Item.find(params[:cart][:item_id])
-            @cart = Cart.new
-            flash[:alert] = "個数を選択してください"
-            render "public/items/show"
-        end
+    if current_customer.carts.find_by(item_id: params[:cart][:item_id]).present?
+      carts=current_customer.carts.find_by(item_id: params[:cart][:item_id])
+      carts.count += params[:cart][:count].to_i
+      carts.save
+      redirect_to carts_path
+    else
+      cart=Cart.new(cart_params)
+      cart.customer_id=current_customer.id
+      cart.save
+      redirect_to carts_path
+    end
     end
 
     # 削除や個数を変更した際、カート商品を再計算する
@@ -48,8 +45,7 @@ before_action :authenticate_customer!
 
     # カート商品を空ににする
     def all
-        @cart = current_customer.carts
-        @cart.all
+        current_customer.carts.destroy_all
         flash[:alert] = "カートの商品を全て削除しました"
         redirect_to carts_path
     end

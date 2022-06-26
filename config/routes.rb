@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   patch 'customers' => 'public/customers#update'
+  get 'orders/thanks' => 'public/orders#thanks'
 
   root to: 'public/homes#top'
    get'about' => 'public/homes#about'
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     get 'customers/bye' => 'customers#bye'
     patch 'customers/adios' => 'customers#adios'
     post 'orders/confirm' => 'orders#confirm'
-    delete 'carts' => 'carts#all'
+    delete 'carts' => 'carts#all', as: 'all'
   end
 
   namespace :admin do
