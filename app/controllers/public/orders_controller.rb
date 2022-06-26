@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @cart_items=current_customer.carts.all
-    @total_price=0
+    @total=0
     if params[:order][:select_address]=="0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
