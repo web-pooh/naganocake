@@ -9,9 +9,9 @@
     </tr>
     <tr>
       <th>配送先</th>
-        <td><%= @order.postel_code %><br>
+        <td><%= @order.postal_code %><br>
             <%= @order.address %><br>
-            <%= @order.name %></td>
+            <%= @order.receiver_name %></td>
     </tr>
     <tr>
       <th>支払方法</th>
@@ -32,11 +32,11 @@
   </tr>
   <tr>
     <th>商品合計</th>
-       <td>¥<%= (@order.price - @order.postage).to_s(:delimited, delimiter: ',') %></td>
+       <td>¥<%= (@order.billing_amount - @order.postage).to_s(:delimited, delimiter: ',') %></td>
   </tr>
   <tr>
     <th>ご請求金額</th>
-      <td>¥<%= @order.price.to_s(:delimited, delimiter: ',') %></td>
+      <td>¥<%= @order.billing_amount.to_s(:delimited, delimiter: ',') %></td>
   </tr>
 </table>
 
@@ -55,7 +55,7 @@
       <tr>
         <td><%= order_detail.item.name %></td>
         <td>¥<%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %></td>
-        <td><%= order_detail.quantity %></td>
+        <td><%= order_detail.amount %></td>
         <td>¥<%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %></td>
       </tr>
         <% end %>
