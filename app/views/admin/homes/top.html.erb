@@ -13,9 +13,9 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-             <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_order_path(order) %></td>
-             <td><%= customers.first_name %> <%= customers.last_name %></td>
-             <td><%= order_details.billing_amount %></td>
+             <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+             <td><%= order.customer.first_name %> <%= order.customer.last_name %></td>
+             <td><%= order.billing_amount %></td>
              <td><%= order.status %></td>
            </tr>
           <% end %>
