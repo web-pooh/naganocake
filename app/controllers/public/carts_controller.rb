@@ -19,13 +19,14 @@ before_action :authenticate_customer!
         @cart.customer_id = current_customer.id
         @cart.item_id = params[:item_id]
         # byebug
-
         if @cart.save
            flash[:notice] = "#{@cart.item.name}をカートに追加しました。"
-           redirect_to carts_path
+           redirect_to items_path
         else
+            @item = Item.find(params[:cart][:item_id])
+            @cart = Cart.new
             flash[:alert] = "個数を選択してください"
-            render "customers/items/show"
+            render "public/items/show"
         end
     end
 
