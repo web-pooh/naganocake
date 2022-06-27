@@ -3,14 +3,14 @@
       <div class="container-fluid mx-5">
           <span class="navbar-brand mb-0 h-1">
       <% if admin_signed_in? %>
-      <%= link_to "NaganoCAKE", admin_root_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", admin_root_path, class: "btn btn-danger" %>
       <% else %>
-      <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", root_path, class: "btn btn-danger" %>
       <% end %>
     </span>
         <% if customer_signed_in? %>
          <!--カスタマーがログインしている時 -->
-          <span class="navbar-text mx-auto">
+          <span class="navbar-text-dark mx-auto">
             ようこそ、<%= current_customer.first_name + current_customer.last_name %>さん！
           </span>
           <% end %>
