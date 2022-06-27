@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   def new
     @customer = current_customer
     @order = Order.new
+    @addresses = Address
   end
 
   def create
@@ -27,12 +28,14 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address]=="0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.first_name
+      @order.receiver_name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address]=="1"
       @address = Address.find(params[:order][:address_id])
-      @order.postal_code = @address.postal_code
+      @order.postal_code = @address.postel_code
       @order.address = @address.address
-      @order.name = @address.name
+      @order.receiver_name = @address.receiver_name
+    elsif params[:order][:select_address]=="2"
+      @address = Address.new
     end
   end
 
