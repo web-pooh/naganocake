@@ -1,43 +1,45 @@
-<h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+<div class="container">
+<h4 style="margin-top:30px;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
 
-<table>
+<table class="table.table-borderless.table-sm">
   <tr>
     <td>会員ID</td>
-    <td><%= @customer.id %></td>
+    <td class="col-sm-6"><%= @customer.id %></td>
   </tr>
   <tr>
     <td>氏名</td>
-    <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    <td class="col-sm-6"><%= @customer.last_name %> <%= @customer.first_name %></td>
   </tr>
   <tr>
     <td>フリガナ</td>
-    <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+    <td class="col-sm-6"><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
   </tr>
   <tr>
     <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
+    <td class="col-sm-6"><%= @customer.postal_code %></td>
   </tr>
   <tr>
     <td>住所</td>
-    <td><%= @customer.address %></td>
+    <td class="col-sm-6"><%= @customer.address %></td>
   </tr>
   <tr>
     <td>電話番号</td>
-    <td><%= @customer.phone_number %></td>
+    <td class="col-sm-6"><%= @customer.phone_number %></td>
   </tr>
   <tr>
     <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
+    <td class="col-sm-6"><%= @customer.email %></td>
   </tr>
   <tr>
     <td>会員ステータス</td>
       <% if @customer.is_deleted==false %>
-    <td>有効</td>
+    <td class="col-sm-6">有効</td>
       <% else %>
-    <td>退会</td>
+    <td class="col-sm-6">退会</td>
       <% end %>
   </tr>
 </table>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
-<%= link_to "注文履歴一覧を見る", admin_root_path %>
+<%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success btn-sm col-sm-2", style:"margin-top:30px;" %>
+<%= link_to "注文履歴一覧を見る", admin_root_path, class:"btn btn-primary btn-sm col-sm-2", style:"margin-top:30px;"%>
+</div>
