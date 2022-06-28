@@ -1,13 +1,9 @@
 <div class="admin_items_index">
-
-
-
-<h2>商品一覧</h2>
-
-<%= link_to "新規商品を登録", new_admin_item_path %>
-<!--仮ボタン-->
-
-   <table class="table table-items">
+ <h4 style="margin-top:30px;">商品一覧</h4>
+ <div class="text-right">
+ 　　<%= link_to "新商品登録", new_admin_item_path, class: "btn btn-success btn-sm" %>
+ </div>
+    <table class="table table-items">
         <thred>
            <tr>
              <th>商品ID</th>

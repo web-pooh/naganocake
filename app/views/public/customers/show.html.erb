@@ -1,37 +1,40 @@
-<div class="customer_show">
-    <h1>マイページ</h1>
-    <h2>登録情報</h2>
-     <%= link_to "編集する", customers_edit_path(@customer) %>
-     <table class="table table-customers">
-       <thred>
-           <tr>
-               <th>氏名</th>
+<div class="container">
+    <h4 style = "margin-top:30px;">マイページ</h4><br>
+    <div class="row">
+     
+    <strong class="red-border px-3 ">登録情報</strong>
+     <%= link_to "編集する", customers_edit_path(@customer), class: "btn btn-success" %>
+      <table class="table table-bordered  thead-light" style="margin-top: 10px;">
+           <thred>
+               <tr>
+               <th scope="col1" style="background-color:#F5F5F5; width:25% "=>氏名</th>
                <td><%= @customer.first_name %><%= @customer.last_name %></td>
            </tr>
            <tr>
-               <th>カナ</th>
+               <th scope="col"  style="background-color:#F5F5F5;">カナ</th>
                <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
            </tr>
            <tr>
-               <th>郵便番号</th>
+               <th scope="col"  style="background-color:#F5F5F5;" >郵便番号</th>
                <td><%= @customer.postal_code %></td>
            </tr>
            <tr>
-               <th>住所</th>
+               <th scope="col" style="background-color:#F5F5F5;" >住所</th>
                <td><%= @customer.address %></td>
            </tr>
            <tr>
-               <th>電話番号</th>
+               <th scope="col" style="background-color:#F5F5F5;" >電話番号</th>
                <td><%= @customer.phone_number %></td>
            </tr>
-               <th>メールアドレス</th>
+               <th scope="col"  style="background-color:#F5F5F5;">メールアドレス</th>
                <td><%= @customer.email %></td>
            </tr>
-      </thred>
+           </thred>
      </table>
-     
-  <h2>配送先</h2>
-     <%= link_to "一覧を見る", addresses_path %>
-  <h2>注文履歴</h2>
-     <%= link_to "一覧を見る", orders_path %>
+     </div>
+    </div>
+  <div class="text-left">
+   <strong class="red-border px-3 pb-1">配送先</strong>  <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary mx-auto my-1"%><br>
+   <strong class="red-border px-3 pb-1">注文履歴</storong> <%= link_to "一覧を見る", orders_path, class: "btn btn-primary"%>
+  </div>
 </div>

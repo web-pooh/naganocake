@@ -1,15 +1,14 @@
 <div class="admin_top">
-<h2>注文履歴一覧</h2>
-   <table class="table table-orders">
+<h4 style="margin-top:30px;">注文履歴一覧</h4>
+   <table class="table">
         <thred>
            <tr>
-             <th>購入日時</th>
-             <th>購入者</th>
-             <th>注文個数</th>
-             <th>注文ステータス</th>
+             <th style="background-color:#F5F5F5;">購入日時</th>
+             <th style="background-color:#F5F5F5;">購入者</th>
+             <th style="background-color:#F5F5F5;">注文個数</th>
+             <th style="background-color:#F5F5F5;">注文ステータス</th>
         　</tr>
         </thred>
-
         <tbody>
           <% @orders.each do |order| %>
           <tr>
