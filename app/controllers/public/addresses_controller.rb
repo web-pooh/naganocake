@@ -12,7 +12,7 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    if @address.save!
+    if @address.save
      flash[:notice] = "新規登録に成功しました"
      redirect_to addresses_path
     else

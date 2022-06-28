@@ -1,4 +1,5 @@
 <div class="container">
+     <h4><%= flash[:notice] %></h4>
      <h4 style="margin-top:30px;">商品新規登録</h4>
       <%= form_with model:@item, url:admin_items_path do |f| %>
      <div class="form-group row">

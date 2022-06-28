@@ -1,7 +1,8 @@
 <div class="admin-item-show">
+	<h4><%= flash[:notice] %></h4>
 	<h4 style="margin-top:30px;">商品詳細</h4>
 　　<div class="col">
-	  <%= image_tag @item.image, class:"float-left" %>
+	  <%= image_tag @item.image, size: "200x200", class:"float-left" %>
 	</div>
        <div class="d-flex">
 		<table class="table table-borderless">
