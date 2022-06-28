@@ -1,31 +1,36 @@
-<h2>ログイン</h2>
 
-<p>会員の方はこちらからログイン</p>
+<div class="border border-3 border-warning rounded-pill bold">
+<div class="container-center p-5 mb-3">
+
+  <div class="row h3 pb-4 ml-4">
+    <div class="text-center col-auto offset-sm-3">会員の方はこちらからログイン</div>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :ログイン情報を保持する %>
+  <div class="field row justify-content-center mb-2">
+    <div class="col-sm-4 w-100">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "w-75" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
+
+  <div class="field row justify-content-center mb-4">
+    <div class="col-sm-4">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "w-75" %>
+    </div>
+  </div>
+
+  <div class="actions field row justify-content-center mb-5">
+    <div class="col-sm-4 offset-sm-2">
+    <%= f.submit "ログイン", class: "btn btn btn-warning w-25 btn-sm" %>
+    </div>
+  </div>
+
 <% end %>
 
-<p>会員登録がお済みでない方</p>
-<p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行なってください。</p>
-
-
+<div class="row h8">
+  <div class="text-center col-auto offset-sm-3">会員登録がお済みでない方は
+  <%= link_to "こちら", new_customer_registration_path %>から新規登録を行なってください。</div>
+  </div>
+</div>
+</div>
