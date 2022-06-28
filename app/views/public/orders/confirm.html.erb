@@ -1,66 +1,84 @@
-<%=form_with model: @order, url: orders_path do |f| %>
-<h3>注文情報確認</h3>
-<table>
-  <tr>
-    <thead>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-    </thead>
-  </tr>
-<% @cart_items.each do |cart_item| %>
-  <tr>
-    <td>
-      <%= image_tag cart_item.item.image, size: "70x45", style: "object-fit:cover", class: "mr-3" %><%= cart_item.item.name %>
-    </td>
-    <td>
-      <%= cart_item.item.price.to_s(:delimited) %>
-    </td>
-    <td>
-      <%= cart_item.count %>
-    </td>
-    <td>
-      <%= cart_item.subtotal.to_s(:delimited) %>
-    </td>
-  </tr>
-<% @total += cart_item.subtotal %>
-<% end %>
-</table>
+<div class="container-fluid p-5">
+  <%=form_with model: @order, url: orders_path do |f| %>
 
-<table>
-  <thead>
+<div class="row h5 pb-4">
+  <div class="text-center col-auto bg-light offset-sm-2 h-25">注文情報確認</div>
+</div>
+  
+<div class="row">
+  
+  <table class="table table-bordered col-sm-7 offset-sm-1">
     <tr>
-      <th>送料</th>
-        <td>
-          <%= f.hidden_field :postage, :value => 800 %>
-          800
-        </td>
-     </tr>
+      <thead class="thead-light">
+        <th class="font-weight-normal">商品名</th>
+        <th class="font-weight-normal">単価(税込)</th>
+        <th class="font-weight-normal">数量</th>
+        <th class="font-weight-normal">小計</th>
+      </thead>
+    </tr>
+  <% @cart_items.each do |cart_item| %>
     <tr>
-      <th>商品合計</th>
-        <td><%= @total.to_s(:delimited) %></td>
+      <td class="py-1">
+        <%= image_tag cart_item.item.image, size: "70x45", style: "object-fit:cover", class: "mr-3" %><%= cart_item.item.name %>
+      </td> 
+      <td class="align-middle">
+        <%= cart_item.item.price.to_s(:delimited) %>
+      </td>
+      <td class="align-middle">
+        <%= cart_item.count %>
+      </td>
+      <td class="align-middle">
+        <%= cart_item.subtotal.to_s(:delimited) %>
+      </td>
+    </tr>
+    <% @total += cart_item.subtotal %>
+    <% end %>
+  </table>
+ 
+  <table class="table table-bordered col-sm-2 ml-auto">
+    <thead class="thead-light">
+      <tr>
+        <th class="font-weight-normal" style="width:50%">送料</th>
+      <td style="width:50%">
+        <%= f.hidden_field :postage, :value => 800 %>
+        800
+      </td>
     </tr>
     <tr>
-      <th>請求金額</th>
-        <td>
+      <th class="font-weight-normal">商品合計</th>
+        <td><%= @total.to_s(:delimited) %></td>
+    </tr>
+     <tr>
+       <th class="font-weight-normal">請求金額</th>
+       <td>
           <%= f.hidden_field :billing_amount, :value => @total+800 %>
           <%= (@total+800).to_s(:delimited) %>
         </td>
-    </tr>
-  </thead>
-</table>
-
-<h2>支払方法</h2>
-<%= f.hidden_field :payment_method, :value => params[:order][:payment_method] %>
-<%= Order.payment_methods_i18n[@order.payment_method] %>
-
-<h2>お届け先</h2>
-<%= f.hidden_field :postal_code, :value => @order.postal_code %>
-<%= f.hidden_field :address, :value => @order.address %>
-<%= f.hidden_field :receiver_name, :value => @order.receiver_name %>
-〒<%= @order.postal_code %> <%= @order.address %><br>
-<%= @order.receiver_name %>
-
-<div><%= f.submit "注文を確定する", class: "btn btn-success px-3" %></div>
-<% end %>
+      </tr>
+    </thead>
+  </table>
+          
+<div class="row mt-4 mb-5">
+  <div class="col offset-sm-1">
+    <div class="row mb-3">
+      <div class="col-auto h5 font-weight-bold">支払方法</div>
+    <div class="col-auto">
+      <%= f.hidden_field :payment_method, :value => params[:order][:payment_method] %>
+      <%= Order.payment_methods_i18n[@order.payment_method] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto h5 font-weight-bold">お届け先</div>
+      <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :receiver_name, :value => @order.receiver_name %>
+    <div class="col-auto">
+      〒<%= @order.postal_code %> <%= @order.address %><br>
+      <%= @order.receiver_name %>
+     </div>
+    </div>
+  </div>
+</div>
+    
+<div class="row justify-content-center"><%= f.submit "注文を確定する", class: "btn btn btn-warning" %></div>
+<% end %> 
