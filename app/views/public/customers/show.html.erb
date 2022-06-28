@@ -2,7 +2,7 @@
     <h4 style = "margin-top:30px;">マイページ</h4><br>
     <div class="row">
      
-    <strong class="red-border px-3 ">登録情報</strong>
+    <strong class="red-border px-3 text-align-middle">登録情報</strong>
      <%= link_to "編集する", customers_edit_path(@customer), class: "btn btn-success" %>
       <table class="table table-bordered  thead-light" style="margin-top: 10px;">
            <thred>
@@ -35,6 +35,6 @@
     </div>
   <div class="text-left">
    <strong class="red-border px-3 pb-1">配送先</strong>  <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary mx-auto my-1"%><br>
-   <strong class="red-border px-3 pb-1">注文履歴</storong> <%= link_to "一覧を見る", orders_path, class: "btn btn-primary"%>
+   <strong class="red-border px-3 pb-1">注文履歴</storong> <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
   </div>
 </div>
