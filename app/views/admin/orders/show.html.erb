@@ -38,7 +38,7 @@
     </table>
   </div>
   <div class="row mt-3">
-    <table class="table col-sm-7 offset-sm-1">
+    <table class="table col-sm-9">
       <tr>
         <thead class="thead-light">
           <th style="width:30%">商品名</th>
@@ -66,7 +66,7 @@
       <% @total+=order_detail.subtotal %>
       <% end %>
     </table>
-    <table class="table table-borderless col-sm-2 offset-sm-1 mt-auto table-sm">
+    <table class="table table-borderless col-sm-3  mt-auto table-sm">
       <tr>
         <th>商品合計</th>
         <td><%= @total.to_s(:delimited) %>円</td>
