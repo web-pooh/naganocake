@@ -24,12 +24,13 @@ class Public::CustomersController < ApplicationController
   
   def adios
     @customer = current_customer
-    @customer.update(is_deletede: false)
+    @customer.update(is_deleted: true)
+    reset_session
     redirect_to root_path
   end
   
   private
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :addresse, :phone_numbere, :email)
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :phone_number, :email)
   end
 end
