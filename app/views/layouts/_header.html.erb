@@ -3,14 +3,14 @@
       <div class="container-fluid mx-5">
           <span class="navbar-brand mb-0 h-1">
       <% if admin_signed_in? %>
-      <%= link_to "NaganoCAKE", admin_root_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", admin_root_path, class: "btn btn-danger" %>
       <% else %>
-      <%= link_to "NaganoCAKE", root_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", root_path, class: "btn btn-danger" %>
       <% end %>
     </span>
         <% if customer_signed_in? %>
          <!--カスタマーがログインしている時 -->
-          <span class="navbar-text mx-auto">
+          <span class="navbar-text-dark mx-auto">
             ようこそ、<%= current_customer.first_name + current_customer.last_name %>さん！
           </span>
           <% end %>
@@ -24,49 +24,50 @@
               <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
           <li class="nav-item m-3">
-            <%= link_to "マイページ", customers_my_page_path(current_customer), class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "マイページ", customers_my_page_path(current_customer), class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "商品一覧", items_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "商品一覧", items_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
             <%= link_to carts_path, data: {"turbolinks" => false},
-             class: "nav-link text-dark btn btn-warning btn-outline-secondary" do %>カート(<%= current_customer.carts.count %>個)
+             class: "nav-link text-dark btn btn-warning" do %>カート(<%= current_customer.carts.count %>個)
             <% end %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-dark btn btn-warning" %>
           </li>
 
         <% elsif admin_signed_in? %>
 
           <!-- 管理者がログインしている時 -->
           <li class="nav-item m-3">
-            <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary"  %>
+            <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark btn btn-warning"  %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "注文履歴一覧", admin_root_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "注文履歴一覧", admin_root_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark btn btn-warning" %>
           </li>
         <% else %>
-
-
-          <li class="nav-item m-3">
-            <%= link_to "商品一覧", items_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+           <li class="nav-item m-3">
+            <%= link_to "About", about_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "商品一覧", items_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
           <li class="nav-item m-3">
-            <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark btn btn-warning btn-outline-secondary" %>
+            <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: "nav-link text-dark btn btn-warning" %>
+          </li>
+          <li class="nav-item m-3">
+            <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark btn btn-warning" %>
           </li>
         <% end %>
       </ul>
